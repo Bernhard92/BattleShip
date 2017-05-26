@@ -1,5 +1,6 @@
 package group5.battleship.src.views;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
@@ -56,7 +57,30 @@ public class MainActivity extends AppCompatActivity{
         //Disable back button
     }
 
+    private class RadarView extends Activity {
+        RadarView mRadarView = null;
+        boolean showCircles;
 
+        protected void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.activity_main);
+
+            mRadarView = (RadarView) findViewById(R.id.radarView);
+            mRadarView.setShowCircles(true);
+        }
+
+        public void stopAnimation() {
+            if (mRadarView != null) mRadarView.stopAnimation();
+        }
+
+        public void startAnimation() {
+            if (mRadarView != null) mRadarView.startAnimation();
+        }
+
+        public void setShowCircles(boolean showCircles) {
+            this.showCircles = showCircles;
+        }
+    }
 
 
 
